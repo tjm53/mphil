@@ -1,0 +1,24 @@
+% -------------------------------------------------------------
+% Abstract
+% -------------------------------------------------------------
+\pdfbookmark[0]{Abstract}{abstract}
+
+\begin{titlepage}
+\thispagestyle{plain}
+
+\vspace*{8.15mm}
+
+
+\headingrule 
+\begin{center}
+\Large \textbf{Simulation of Breathing for Medical Applications} \ \\ \ \\
+\large {Thierry J. Maldonado}\\
+\end{center}
+\headingrule \ \\ \ \\
+
+ 
+This work describes further research on the Structured Light Plethysmography (SLP) project \cite{slp2010} which is a non-invasive method for pulmonary function testing using visible light. This technique uses two cameras and a known grid which is projected onto the chest of a patient. Using stereo vision algorithms, the 3D coordinates of each grid point projected on the chest wall are recovered over time. As the device captures only the front of the chest wall, we cannot infer the absolute volumes of the lungs but only volume changes of the thoracic cage. However, when it comes to examining respiratory function in a patient, absolute volumes represent a crucial piece of information. In order to address this problem we use optimisation techniques to fit SLP data to a highly detailed 3D model of the human torso (composed of rigid parts and muscles) that we have created. Our simulation provides us with both the optimal muscle inputs to simulate breathing and the absolute volumes of the lungs for a given SLP dataset.
+As we wish to investigate pulmonary function, the model must be anatomically and physiologically accurate enough to be medically approved. Previous attempts have concentrated more on the visual side of the simulations than on the medical applications, which often resulted in overly simplified models. Lee et al. \cite{lee2009comprehensive} describes a model of the whole upper body but with few respiratory muscles of the rib cage and with no diaphragm, which is an essential muscle in breathing. Zordan et al. \cite{zordan2004breathe} uses a skeleton model which anatomically-wise lacks realism and simplifies the articular bones in the spine and the rib cage by grouping and treating them as a single rigid body. Furthermore, in \cite{zordan2004breathe} the different muscles are grouped and receive the same input (a step function for the diaphragm and sine functions for all the others) in order to produce visually pleasing results.
+In comparison, our model has high anatomical accuracy in the dimensions of the rigid parts and in the locations of the joints linking them and the muscles involved in breathing (the rigid parts, the joints and the muscle locations were designed using current anatomy books). In addition, it has high-level controls, is fully tunable (each muscle can be activated independently) and can be fitted to different patient anatomies.
+The results obtained from our simulations through our data-driven approach were compared with the data from another conventional lung volume measuring technique, spirometry. Both frequentist and Bayesian tests were used to compare the datasets.
+\end{titlepage}
