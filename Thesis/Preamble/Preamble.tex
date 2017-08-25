@@ -1,0 +1,219 @@
+% -------------------------------------------------------------
+% PREAMBLE
+% by Thierry Maldonado
+% Cambridge University Engineering Department
+% tjm53@cam.ac.uk
+% -------------------------------------------------------------
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+%\usepackage[sc,osf]{mathpazo} 
+\usepackage[english]{babel}
+
+\usepackage{tabularx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[pdftex]{graphicx}
+\usepackage{graphics}
+\usepackage{textcomp}
+\usepackage{float}
+\usepackage{import}
+
+\usepackage{lscape}
+\DeclareFontSubstitution{T1}{ppl}{bx}{sc}    
+
+\usepackage{subfigure}
+\usepackage{natbib}
+\usepackage{multirow}
+
+\usepackage{appendix}
+
+\setcounter{tocdepth}{4}
+\usepackage[nottoc, notlof, notlot]{tocbibind}
+
+\usepackage[
+	bookmarksnumbered=true,
+    bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat?s bookmarks
+    pdftoolbar=true,        % show Acrobat?s toolbar?
+    pdfmenubar=true,        % show Acrobat?s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={Fit},    % fits the width of the page to the window
+    pdftitle={Simulation of breathing for medical applications},    % title
+    pdfauthor={Thierry J. Maldonado},     % author
+    pdfsubject={Master of Philosophy in Engineering - University of Cambridge},   % subject of the document
+    pdfcreator={Thierry J. Maldonado},   % creator of the document
+    pdfproducer={Thierry J. Maldonado}, % producer of the document
+    pdfkeywords={engineering} {biomedical} {breathing} {3D} {modelling} {structured light plethysmography} {SLP}, % list of keywords
+    pdfnewwindow=true,      % links in new window
+    colorlinks=false,       % false: boxed links; true: colored links
+    linkcolor=red,          % color of internal links
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan,          % color of external links
+    %bookmarksopen,			%break down the bookmarks
+	%bookmarksdepth = 4,	
+]{hyperref}
+
+
+% -------------------------------------------------------------
+% Change baseline spacing
+% -------------------------------------------------------------
+%\usepackage{setspace}
+%\onehalfspacing
+\renewcommand{\baselinestretch}{1.2}
+% -------------------------------------------------------------
+
+% -------------------------------------------------------------
+% Change the margins for pictures
+% -------------------------------------------------------------
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\floatpagefraction}{0.89}
+% -------------------------------------------------------------
+
+% -------------------------------------------------------------
+% Page Margins
+% -------------------------------------------------------------
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2ex} 
+\setlength{\topmargin}{-0.5in}          % Margin from top
+\setlength{\textheight}{9.4in}          % Height of main text
+\setlength{\textwidth}{6.2in}           % Width of text
+\setlength{\oddsidemargin}{0.65cm}       % Odd page left margin
+\setlength{\evensidemargin}{-0.65cm}     % Even page left margin
+%\setlength{topskip}{0.05in}            % Between header and text
+%\setlength{\headsep}{0.7in}            % Between header and text
+% -------------------------------------------------------------
+
+% -------------------------------------------------------------
+% Fancy Letter in the beginning of each chapter
+% -------------------------------------------------------------
+\usepackage{lettrine}
+
+\renewcommand{\LettrineFontHook}{\fontfamily{pzc} \fontseries{bx}
+\fontshape{it}} \newcommand{\malettrine}[1]
+    {\lettrine[lines=2,lhang=0.33,loversize=0.33,findent=.3em]{#1}}
+% -------------------------------------------------------------
+
+% -------------------------------------------------------------
+% Chapter Title
+% -------------------------------------------------------------
+\usepackage{xcolor}
+\definecolor{chaptergrey}{RGB}{163,193,173}
+
+\usepackage[nogrey, utopia]{quotchap}
+
+\setkomafont{sectioning}{\bfseries}
+\setkomafont{chapter}{\Huge}
+% -------------------------------------------------------------
+
+% -------------------------------------------------------------
+% Page Style
+% -------------------------------------------------------------
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt}
+ 
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+%\renewcommand{\sectionmark}[1]{\markright{#1}{}}
+
+\renewcommand{\headrulewidth}{0.6pt}
+
+%\def\thechapter{\Roman{chapter}}
+
+\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\chaptername\ \thechapter\ - #1}}{}}
+
+\makeatletter
+\renewcommand{\headrule}{%
+\color{chaptergrey}{
+\setlength\@tempdima{\headrulewidth}%
+\hrule\@height\@tempdima\@width\headwidth
+%\vskip 2\@tempdima
+%\hrule\@height\@tempdima\@width\headwidth
+%\vskip -4\@tempdima
+	}
+}
+\makeatother
+ 
+\fancyhf{}
+
+\makeatletter
+\if@twoside
+	\fancyhead[LE,RO]{\textbf{\thepage}}
+	\fancyhead[LO]{\textit{\textbf{\nouppercase{\rightmark}}}}
+	\fancyhead[RE]{\textbf{\nouppercase{\leftmark}}}
+	\fancypagestyle{plain}{
+		\fancyhf{} % remove everything
+		\renewcommand{\headrulewidth}{0pt} % remove lines as well
+		\renewcommand{\footrulewidth}{0pt}}
+\else
+	\lhead{\textbf{\nouppercase{\leftmark}}}
+	\cfoot{- \thepage\ -}
+	\fancypagestyle{plain}{
+		\fancyhf{} % remove everything
+		\renewcommand{\headrulewidth}{0pt} % remove lines as well
+		\renewcommand{\footrulewidth}{0pt}
+		\cfoot{- \thepage\ -}}
+\fi
+\makeatother
+% -------------------------------------------------------------
+
+% -------------------------------------------------------------
+% Configure the font in figure and table captions
+% -------------------------------------------------------------
+%\usepackage[font=small,format=plain,labelfont=bf,up,textfont=it,up]{caption}
+
+\newcommand{\captionfonts}{\small}
+
+\makeatletter  % Allow the use of @ in command names
+\long\def\@makecaption#1#2{%
+  \vskip\abovecaptionskip
+  \sbox\@tempboxa{{\captionfonts\bfseries {#1}~ \normalfont\captionfonts\slshape #2}}%
+  \ifdim \wd\@tempboxa >\hsize
+    {\captionfonts\bfseries {#1}~ \normalfont\captionfonts\slshape #2\par}
+  \else
+    \hbox to\hsize{\hfil\box\@tempboxa\hfil}%
+  \fi
+  \vskip\belowcaptionskip}
+\makeatother   % Cancel the effect of \makeatletter
+
+% -------------------------------------------------------------
+
+% -------------------------------------------------------------
+%  Adding lines below the chapter head
+% -------------------------------------------------------------
+
+% 1st get a new command
+\newcommand*{\ORIGchapterheadstartvskip}{}%
+% 2nd save the original definition to the new command
+\let\ORIGchapterheadstartvskip=\chapterheadstartvskip
+% 3rd redefine the command using the saved original command
+\renewcommand*{\chapterheadstartvskip}{%
+  \ORIGchapterheadstartvskip
+  
+  {%
+    \setlength{\parskip}{0pt}%
+    \color{chaptergrey}\noindent\rule[.3\baselineskip]{\linewidth}{\headrulewidth}\par
+  }%
+}
+
+% see above
+\newcommand*{\ORIGchapterheadendvskip}{}%
+\let\ORIGchapterheadendvskip=\chapterheadendvskip
+\renewcommand*{\chapterheadendvskip}{%
+  {%
+    \setlength{\parskip}{0pt}%
+    \color{chaptergrey}\noindent\rule[.3\baselineskip]{\linewidth}{\headrulewidth}\par
+  }%
+  \ORIGchapterheadendvskip
+}
+% -------------------------------------------------------------
+
+% -------------------------------------------------------------
+% Custom Macros
+% -------------------------------------------------------------
+\newcommand{\titlerule}{\rule{\linewidth}{1.5mm}}
+\newcommand{\headingrule}{{\color{chaptergrey}\rule{\linewidth}{\headrulewidth}}}
+% -------------------------------------------------------------

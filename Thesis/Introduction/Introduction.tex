@@ -1,0 +1,43 @@
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+\markboth{Introduction}{}
+
+On average, an adult breathes 10,000 litres of air a day providing oxygen to the body that is essential for human life. However, it is not well known that respiratory diseases are the leading cause of death worldwide. According to the European Lung Foundation, in terms of mortality, incidence, prevalence and costs, respiratory diseases rank second after cardiovascular diseases. In some countries (e.g. the UK), they are in fact the leading killer. Respiratory diseases affect all subsets of the population independent of age and sex; even animals are affected. To detect, understand and cure respiratory diseases it is crucial to assess the respiratory status of a patient. This is mostly achieved with the knowledge of the volume changes of the lungs with time. Current techniques are mostly invasive in the sense that they require the patient's cooperation and physical interaction with some device. Up to now, the most commonly performed technique has been \emph{spirometry} which involves the patient blowing into a mouthpiece to produce flow versus time from which volume changes in the lungs can be inferred. While spirometry provides accurate results, as it is an invasive device, various subsets of the human population, such as babies and the elderly, are unable to use it. There have been recent advances in the design of non-invasive technologies, such as the elastomeric plethysmograph (piezoelectric belt fastened around a patient's chest which gives the volume change of the chest according to deformations of the belt) or the opto-electronic plethysmograph (optical reflectance motion-analysis system that measures the volume change of the chest wall by computing 3D coordinates of markers placed on the rib cage and abdomen). However, the elastomeric plethysmograph suffers from artefacts due to inevitable changes in body position and the opto-electronic plethysmograph is still very expensive and requires a big space that is not available in most hospitals.
+
+This report outlines further research on the Structured Light Plethysmography (herein abbreviated as SLP) project which is a non-invasive method for pulmonary function testing using visible light. This technique uses two cameras and a known grid which is projected onto the chest of a patient. Using stereo vision algorithms, a surface approximation of the chest wall moving over time is reconstructed. As the device captures only the front of the chest wall, we cannot infer the absolute volumes of the lungs but only volume changes of the thoracic cage (in our case, using Gauss's Theorem). However, when it comes to examining respiratory function in a patient, absolute volumes represent a crucial piece of information. In order to address this problem we have created a realistic 3D model of the chest and abdomen, together with a muscle structure which can be activated to produce movement, and a skin which represents the torso surface. The idea is to create breathing via time variation of a small number of parameters (basically muscle activations). We can then fit our observed data to our moving model---this will give us the parameters of the model and from these we can infer the volume changes in the lungs. In addition, we will produce a better visualisation of the respiratory movements. The project therefore consists of modelling the different parts of the human body responsible for respiration and controlling the model by fitting data from the SLP system.
+
+There are six distinct steps in this project:
+
+\begin{enumerate}
+	\item Understand the respiratory system and the breathing movements.
+	\item Model the rib cage (bones and muscles) and simulate movement.
+	\item Model the diaphragm and synchronise its movement to the rib cage.
+	\item Rig an adapted skin mesh to the rib cage and diaphragm models.
+	\item Fit the data from the SLP to the model.
+	\item Validate our method by comparing the results obtained with different well-acknowledged techniques.
+\end{enumerate}
+
+As complex interactions occur inside the human torso between rigid parts (e.g. spine, ribs and sternum) and deformable ones (e.g. lungs, abdomen and diaphragm), realistic anatomical modelling of the human torso has been a major challenge in computer animation.
+Previous attempts were more concentrated on the visual side of the simulations than on the medical applications, which often resulted in overly simplified models.
+
+To summarise, this work makes five primary contributions:
+\begin{enumerate}
+	\item We introduce a model which has high anatomical accuracy in both the dimensions of the rigid parts and the locations of the joints linking them.
+	\item We develop a fully tunable model that can be fitted to different patient anatomies.
+	\item We present high-level controls that could be used to activate the model to produce different breathing patterns.
+	\item We design a method relying on optimisation to fit SLP datasets to the simulation.
+	\item We validate our method by comparing it to a medically well-acknowledged lungs' volume measurement device called spirometry.
+\end{enumerate}
+
+
+The thesis is organised into five chapters as outlined below.
+
+Chapter \ref{ch:human_torso_model} will review relevant prior work on modelling and simulating the human torso, then describe the different mechanisms involved in breathing to finally explain how we modelled the rigid-parts of our simulation. 
+
+Chapter \ref{ch:simu_resp_mus} will describe the muscle element model we used and explain in detail the muscles responsible for breathing mechanisms and their actions. Finally, it details how these muscles are simulated and activated in the model.
+
+Chapter \ref{ch:fitting_datasets} will provide some relevant background on the SLP technique and the nature of the data it provides. It will then explain how we fit an adapted skin mesh to the model and describe how this skin mesh is deformed according to the rib cage and abdomen motion. Finally, it will detail the optimisation algorithms used to fit the SLP dataset to the model.
+
+Chapter \ref{ch:validation} will discuss the validity of our method. Firstly, it will describe the protocol followed to acquire data and provide an analysis of the data obtained on three subjects. Secondly, it will present the different comparison techniques and the results achieved with our datasets.
+
+Chapter \ref{ch:implementation_issues} will explain how we implemented our method and the different software and file types used.

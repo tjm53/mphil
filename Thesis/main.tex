@@ -1,0 +1,99 @@
+\documentclass[a4, 11pt, twoside]{scrbook}
+
+\include{Preamble/Preamble}
+
+% -------------------------------------------------------------
+% Document Starts
+% -------------------------------------------------------------
+\begin{document}
+% -------------------------------------------------------------
+
+% -------------------------------------------------------------
+% Title page
+% -------------------------------------------------------------
+\include{Title/Title}
+\cleardoublepage
+% -------------------------------------------------------------
+
+\pagenumbering{roman}
+
+% -------------------------------------------------------------
+% Declaration
+% -------------------------------------------------------------
+\include{Preface/Preface}
+\cleardoublepage
+% -------------------------------------------------------------
+
+
+% -------------------------------------------------------------
+% Abstract
+% -------------------------------------------------------------
+\include{Abstract/Abstract}
+\cleardoublepage
+%--------------------------------------------------------------
+
+% -------------------------------------------------------------
+% Table of Contents
+% -------------------------------------------------------------
+\renewcommand\contentsname{Table of Contents}
+\pdfbookmark[0]{Table of Contents}{toc}
+\tableofcontents
+\cleardoublepage
+%--------------------------------------------------------------
+
+% -------------------------------------------------------------
+% List of Figures
+% -------------------------------------------------------------
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures}
+\cleardoublepage
+%--------------------------------------------------------------
+
+% -------------------------------------------------------------
+% List of Tables
+% -------------------------------------------------------------
+\listoftables
+\addcontentsline{toc}{chapter}{List of Tables}
+\cleardoublepage
+%--------------------------------------------------------------
+
+\pagenumbering{arabic}
+
+% -------------------------------------------------------------
+% Main Document
+% -------------------------------------------------------------
+\subimport{Introduction/}{Introduction.tex}
+
+\subimport{Chap1/}{Human_torso_model.tex}
+\subimport{Chap2/}{Simu_resp_muscles.tex}
+\subimport{Chap3/}{Fitting_datasets.tex}
+\subimport{Chap4/}{Validation_SLP_spiro.tex}
+\subimport{Chap5/}{Implementation_issues.tex}
+
+\subimport{Conclusion/}{Conclusion.tex}
+
+\appendix
+\subimport{Appendix/}{Appendix.tex}
+% -------------------------------------------------------------
+
+
+
+% -------------------------------------------------------------
+% Bibliography
+% -------------------------------------------------------------
+\makeatletter
+\if@twoside
+	\fancyhead[LO]{}
+\else
+	\fancyhead[LO]{\textbf{\nouppercase{\rightmark}}}
+\fi
+\makeatother
+
+\nocite{*}
+
+\bibliography{Bibliography/Bibliography}
+\bibliographystyle{unsrt}
+% -------------------------------------------------------------
+
+
+\end{document}
